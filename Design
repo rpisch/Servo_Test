@@ -1,0 +1,113 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 01/27/2022 09:32:34 PM
+// Design Name: 
+// Module Name: PWM_module
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module Servo_Test_Design(
+    //inputs
+    input clock,
+    input SW5,
+    input SW6,
+    input SW7,
+    input SW8,
+    input SW9,
+    input SW10,
+    input reset, 
+
+   
+    //outputs
+    output PWM1
+    );
+           
+        //registers
+       
+        localparam N = 21;        
+        reg [N-1:0] counter; //the 20 bit counter which allows us to multiplex and run clock frequency at 95Hz
+        reg [20:0] width;    // width from (0 - 2^20) - 1 or (0 - 1048575)
+        
+        reg temp_PWM1;
+        
+        
+        //initial values
+        initial begin
+            counter = 0;
+            width = 0;
+            temp_PWM1 = 0;
+            
+
+     
+        end
+        
+        //clock
+        always@(posedge clock) begin
+         if(reset)
+              counter <= 0;
+         else
+              counter <= counter + 1;
+
+                                                                   
+            if (counter < width)
+                temp_PWM1 <=1;
+            else
+                temp_PWM1 <=0;
+                
+                                           
+        end
+        
+        //PWM widhths
+        always @ (*) begin
+            
+            if (SW5 == 1) begin               
+                width = 21'd104896;          // 5% duty cycle, 1ms pulse width        
+            end
+            
+            if (SW6 == 1) begin               
+                width = 21'd125828;          // 6% duty cycle, 1.2ms pulse width        
+            end
+            
+            if (SW7 == 1) begin               
+                width = 21'd146799;          // 7% duty cycle, 1.4ms pulse width        
+            end
+                        
+            if (SW8 == 1) begin               
+                width = 21'd167771;          // 8% duty cycle, 1.6ms pulse width        
+            end
+            
+            if (SW9 == 1) begin               
+                width = 21'd188742;          // 9% duty cycle, 1.8ms pulse width        
+            end
+            
+            if (SW10 == 1) begin               
+                width = 21'd209714;          // 10% duty cycle, 2ms pulse width            
+            end
+            
+            if (SW5 == 0 && SW6 == 0 && SW7 == 0 && SW8 == 0 && SW9 == 0 && SW10 == 0) begin               
+                width = 21'd0;          // no input            
+            end
+                       
+         end
+ 
+        //assigning final variables            
+       
+        assign PWM1 = temp_PWM1;
+       
+        
+
+endmodule
