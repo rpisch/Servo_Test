@@ -1,0 +1,204 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 01/27/2022 11:04:58 PM
+// Design Name: 
+// Module Name: PWM_TestBench
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module Servo_Test_Simulation(
+    );
+    
+    reg clock;
+    reg SW5;
+    reg SW6;
+    reg SW7;
+    reg SW8;
+    reg SW9;
+    reg SW10;
+
+    reg reset;
+//    reg SWE;
+   
+    
+//    reg enable;
+//    wire oute1;
+//    wire oute2;    
+    wire PWM1;
+//    wire PWM2;
+//    wire a, b, c, d, e, f, g;
+//    wire an;
+//    wire enable1;
+//    wire enable2;
+//    wire PWM3;
+//    wire PWM4;
+
+    
+    
+    Servo_Test_Design UUT(clock, SW5, SW6, SW7, SW8, SW9, SW10, reset, PWM1);
+    
+    initial begin
+        clock = 0;
+        reset = 0;       
+        SW5 = 0;
+        SW6 = 0;
+        SW7 = 0;
+        SW8 = 0;
+        SW9 = 0;
+        SW10 = 0;
+
+        #1000000000
+        
+        
+        
+        reset = 0;        
+        SW5 = 0;
+        SW6 = 0;
+        SW7 = 0;
+        SW8 = 0;
+        SW9 = 0;
+        SW10 = 0;
+
+        #10000000000
+
+        reset = 0;               
+        SW5 = 1;
+        SW6 = 0;
+        SW7 = 0;
+        SW8 = 0;
+        SW9 = 0;
+        SW10 = 0;
+
+        #10000000000
+        
+        reset = 0;        
+        SW5 = 0;
+        SW6 = 0;
+        SW7 = 0;
+        SW8 = 0;
+        SW9 = 0;
+        SW10 = 0;
+
+        #10000000000                      
+        
+        reset = 0;               
+        SW5 = 0;
+        SW6 = 1;
+        SW7 = 0;
+        SW8 = 0;
+        SW9 = 0;
+        SW10 = 0;
+
+        #10000000000
+        
+        reset = 0;        
+        SW5 = 0;
+        SW6 = 0;
+        SW7 = 0;
+        SW8 = 0;
+        SW9 = 0;
+        SW10 = 0;
+
+        #10000000000                
+        
+        reset = 0;               
+        SW5 = 0;
+        SW6 = 0;
+        SW7 = 1;
+        SW8 = 0;
+        SW9 = 0;
+        SW10 = 0;
+
+        #10000000000
+        
+        reset = 0;        
+        SW5 = 0;
+        SW6 = 0;
+        SW7 = 0;
+        SW8 = 0;
+        SW9 = 0;
+        SW10 = 0;
+
+        #10000000000        
+        
+        reset = 0;               
+        SW5 = 0;
+        SW6 = 0;
+        SW7 = 0;
+        SW8 = 1;
+        SW9 = 0;
+        SW10 = 0;
+
+        #10000000000
+        
+        reset = 0;        
+        SW5 = 0;
+        SW6 = 0;
+        SW7 = 0;
+        SW8 = 0;
+        SW9 = 0;
+        SW10 = 0;
+
+        #10000000000        
+        
+        reset = 0;               
+        SW5 = 0;
+        SW6 = 0;
+        SW7 = 0;
+        SW8 = 0;
+        SW9 = 1;
+        SW10 = 0;
+
+        #10000000000
+        
+        reset = 0;        
+        SW5 = 0;
+        SW6 = 0;
+        SW7 = 0;
+        SW8 = 0;
+        SW9 = 0;
+        SW10 = 0;
+
+        #10000000000        
+        
+        reset = 0;               
+        SW5 = 0;
+        SW6 = 0;
+        SW7 = 0;
+        SW8 = 0;
+        SW9 = 0;
+        SW10 = 1;
+
+        #100000000
+       
+        
+        reset = 0; 
+        SW5 = 0;
+        SW6 = 0;
+        SW7 = 0;
+        SW8 = 0;
+        SW9 = 0;
+        SW10 = 0;
+              
+               
+    end
+    
+    always begin
+        #10000000 clock = ~clock;
+    end
+
+endmodule
